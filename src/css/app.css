@@ -1,0 +1,86 @@
+html, body{
+  height: 100%;
+}
+
+body {
+  font-family: "Lucida Grande", "Segoe UI", Ubuntu, Cantarell, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #E8E8E8;
+}
+
+.toolbar {
+  -webkit-app-region: no-drag;
+}
+
+.user-controls {
+  font-size: 2rem;
+  color:#E8E8E8;
+}
+
+#user-control-bar {
+  background-color: #333333;
+}
+
+#user-control-bar > a {
+  padding-left: 10px;
+}
+
+#toolbar {
+  height: 25px;
+  background-color: white;
+}
+
+#toolbar p {
+  position: absolute;
+  text-align: left;
+  font-size: 1.7rem;
+  font-weight: bolder;
+}
+
+#toolbar ul {
+  position: absolute;
+  list-style: none;
+  text-align: right;
+  right: 0;
+}
+
+#toolbar li {
+  padding-right: 10px;
+  float: right;
+}
+
+#toolbar a {
+  font-size: 2rem;
+  color: #333333;
+}
+
+#toolbar i {
+  left: 0;
+}
+
+#main {
+  margin-top: 25px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right:0;
+}
+
+table {
+  font-size: 12px;
+}
+
+i {
+  transition: all .2s ease-in-out;
+}
+
+i:hover {
+  transform: scale(1.25, 1.25);
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+}

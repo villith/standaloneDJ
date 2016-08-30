@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Discord DJ</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="./css/jquery-ui.min.css">
+    <link rel="stylesheet" href="./css/awesome-bootstrap-checkbox.css">
+    <link rel="stylesheet" href="./css/video-js.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <script>
+      var $ = jQuery = require("jquery")
+      var jQueryUI = require("jquery-ui")
+      var bootstrap = require("bootstrap")
+      var bootbox = require("bootbox")
+      var videojs = require("video.js")
+      var notifier = require("node-notifier")
+      var indexLib = require('./js/libs/index')
+      var dragNdrop = require('./js/libs/drag-n-drop')
+    </script>
+  </head>
+  <style>
+  </style>
+  <body ondrop='dragNdrop.dropHandler(event)' ondragover='dragNdrop.dragoverHandler(event)'>
+    <div id="wrapper">
+      <div id="toolbar" style="-webkit-app-region: drag">
+        <p>DISCORD DJ</p>
+        <ul>
+          <li><a href="#" class='toolbar' id='toolbar-exit'><i class='fa fa-times'></i></a></li>
+          <li><a href="#" class='toolbar' id='toolbar-maximize'><i class='fa fa-plus'></i></a></li>
+          <li><a href="#" class='toolbar' id='toolbar-minimize'><i class='fa fa-minus'></i></a></li>
+        </ul>
+      </div>
+      <div id="main">
+      </div>
+    </div>
+  </body>
+</html>

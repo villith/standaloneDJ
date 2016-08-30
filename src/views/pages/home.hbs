@@ -1,0 +1,29 @@
+<div id='home'>
+  <video id='video-frame' class='video-js vjs-default-skin' width='400' height='225'>
+    <source src='./media/video/small.mp4' type='video/mp4' id='current-video'>
+  </video>
+  <div id='user-control-bar'>
+    <a href='#' class='user-controls' title='Upvote Track' data-container='body' data-placement='bottom' id='upvote-current-track-btn'><i class='fa fa-thumbs-up text-success'></i></a>
+    <a href='#' class='user-controls' title='Downvote Track' data-container='body' data-placement='bottom' id='downvote-current-track-btn'><i class='fa fa-thumbs-down text-danger'></i></a>
+    <a href='#' class='user-controls' title='Vote Skip' data-container='body' data-placement='bottom' id='vote-skip-btn'><i class='fa fa-fast-forward'></i></a>
+  </div>
+  <div>
+    <div id='playlist'>
+      <table class='table table-hover' style='cursor: pointer; cursor: hand;' id='playlist-list'>
+        <thead class='thead-inverse'>
+          <th>Name</th>
+          <th>Artist</th>
+          <th>Duration</th>
+          <th></th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <input type='file' style='display: none' id='uploadFile'></input>
+  </div>
+</div>
+<script>
+  var initHome = require('./js/controllers/home');
+  initHome.initHome();
+</script>
