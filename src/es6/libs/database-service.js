@@ -1,7 +1,9 @@
 import request from 'request';
 import fs from 'fs';
 import list from './list';
+import path from 'path';
 
+let p = path.join(__dirname, '..', '..', 'trackList.json');
 let tableData = [];
 
 let uploadFile = file => {
@@ -21,36 +23,63 @@ let uploadFile = file => {
   });
 }
 
-let getPlaylist = () => {
-  request.get({
-    url: 'http://52.39.82.57:3000/node/api/tracks'
+let addYTAudio = url => {
+  let form = {
+    url: url
+  }
+  request.post({
+    url: 'http://52.39.82.57:3000/node/api/youtube',
+    form: form
   }, (err, res, body) => {
-    body.forEach(fileName => {
-    })
+    console.log(err);
+    console.log(res);
+    console.log(body);
+  });
+}
+
+let getAllTracks = () => {
+  let missingTrackIDs = [];
+  request.get({
+    url: 'http://52.39.82.57:3000/node/api/tracks/sync'
+  }, (err, res, body) => {
     let parsedBody = JSON.parse(body);
     let data = parsedBody.data;
-    data.forEach(file => {
-      let tmpDir = `./src/tmp/${file.name}`;
-      fs.stat(tmpDir, (err, stats) => {
-        if (!err) {
-          console.log(stats);
-        }
-        else if (err.code === 'ENOENT') {
-          fs.writeFileSync(tmpDir, file.data, 'base64');
-          fs.stat(tmpDir, (e, s) => {
-            if (e.code === 'ENOENT') {
-              return console.log('Something is wrong. Check database-service.js');
-            }
-          })
-        }
-        else {
-          console.log(err);
-        }
-      })
+    for (let i = 0; i < data.length; i++) {
+      let index = findById(data[i].id);
+      if (index === false) {
+        missingTrackIDs.push(data[i].id);
+      }
+    }
+    missingTrackIDs.forEach(id => {
+      downloadTrack(id);
     })
   })
 }
+
+let findById = id => {
+  let index = false;
+  let trackArray = trackList.tracks.slice(0);
+  for (let i = 0; i < trackArray.length; i++) {
+    if (trackArray[i][0].id === id) {
+      index = i;
+    }
+  }
+  return index;
+}
+
+let downloadTrack = trackID => {
+  request.get({
+    url: `http://52.39.82.57:3000/node/api/tracks/${trackID}`
+  }, (err, res, body) => {
+    let parsedBody = JSON.parse(body);
+    let data = parsedBody.data;
+    trackList.tracks.push(data);
+    fs.writeFileSync(p, JSON.stringify(trackList, null, 2));
+    console.log(`${data[0].name} downloaded!`);
+  });
+}
 module.exports = {
   uploadFile: uploadFile,
-  getPlaylist: getPlaylist
+  getAllTracks: getAllTracks,
+  addYTAudio: addYTAudio
 }

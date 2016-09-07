@@ -12,8 +12,6 @@
       <table class='table table-hover' style='cursor: pointer; cursor: hand;' id='playlist-list'>
         <thead class='thead-inverse'>
           <th>Name</th>
-          <th>Artist</th>
-          <th>Duration</th>
           <th></th>
         </thead>
         <tbody>
@@ -21,6 +19,27 @@
       </table>
     </div>
     <input type='file' style='display: none' id='uploadFile'></input>
+    <div id='youtube-add-modal' class='modal fade' role='dialog'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <form id='youtube-add-form'>
+            <div class='modal-body'>
+              <input type='text' class='form-control' id='youtube-add-url' placeholder='Enter YouTube URL here'>
+              </br>
+            </br>
+              <div id='modal-buttons'>
+                <input type='submit' class='btn btn-success'>
+                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='input-group input-group-lg' id='trackSearch-div'>
+    <input type='text' class='form-control' id='trackSearch' placeholder='Search the server library here'>
+    <span class='input-group-addon' id='youtube-span'><a href='#' data-toggle='modal' data-target='#youtube-add-modal' title='Submit YouTube URL' data-container='body' data-placement='right' id='youtube-add-btn'><i class='fa fa-youtube fa-2x text-danger'></i></a></span>
   </div>
 </div>
 <script>

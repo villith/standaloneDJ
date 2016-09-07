@@ -10,6 +10,7 @@
     "electron-prebuilt": "^1.2.5",
     "electron-reload": "^1.0.0",
     "fs-extra": "0.30.0",
+    "fuse.js": "^2.5.0",
     "handlebars": "4.0.5",
     "jquery": "^3.0.0",
     "jquery-ui": "1.10.5",

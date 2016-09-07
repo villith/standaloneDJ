@@ -68,6 +68,26 @@ body {
   right:0;
 }
 
+#trackSearch-div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+#youtube-span {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#modal-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+}
+
 table {
   font-size: 12px;
 }

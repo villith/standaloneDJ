@@ -1,5 +1,5 @@
 let drawRow = rowData => {
-  let listColumns = ['name', 'artist', 'duration'];
+  let listColumns = ['name'];
   let data = Object.keys(rowData);
   for (let i = 0; i < data.length; i++) {
     let rowObj = rowData[data[i]];

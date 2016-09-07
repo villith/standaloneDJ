@@ -1,7 +1,7 @@
 'use strict';
 
 var drawRow = function drawRow(rowData) {
-  var listColumns = ['name', 'artist', 'duration'];
+  var listColumns = ['name'];
   var data = Object.keys(rowData);
 
   var _loop = function _loop(i) {

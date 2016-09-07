@@ -6,6 +6,7 @@
         "browser": true
     },
     "globals": {
+        "trackList": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {

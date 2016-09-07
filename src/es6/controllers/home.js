@@ -4,33 +4,23 @@ import client from '../libs/database-service';
 
 let initHome = () => {
   initButtons();
-  client.getPlaylist();
+  client.getAllTracks();
   player.initPlayer();
+  list.drawTable(trackList.tracks);
 }
 
 let initButtons = () => {
-  // getAllTracksBtn();
+  youtubeAddBtn();
 }
 
-// let getAllTracksBtn = () => {
-//   let button = document.getElementById('get-all-tracks-btn');
-//   let form = {
-//     name: 'test2',
-//     artist: 'test artist',
-//     duration: 18500,
-//     uploader: 'test person'
-//   }
-//   button.onclick = ev => {
-//     request.post({
-//       url: 'http://52.39.82.57:3000/node/api/tracks',
-//       form: form
-//     }, (err, res, body) => {
-//       console.log(err);
-//       console.log(res);
-//       console.log(body);
-//     });
-//   }
-// }
+let youtubeAddBtn = () => {
+  let inputForm = document.getElementById('youtube-add-form');
+  inputForm.onsubmit = ev => {
+    ev.preventDefault();
+    let url = ev.srcElement[0].value;
+    client.addYTAudio(url);
+  }
+}
 
 module.exports = {
   initHome: initHome

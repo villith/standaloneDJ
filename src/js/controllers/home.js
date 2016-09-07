@@ -16,35 +16,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var initHome = function initHome() {
   initButtons();
-  _databaseService2.default.getPlaylist();
+  _databaseService2.default.getAllTracks();
   _videoPlayer2.default.initPlayer();
+  _list2.default.drawTable(trackList.tracks);
 };
 
-var initButtons = function initButtons() {}
-// getAllTracksBtn();
+var initButtons = function initButtons() {
+  youtubeAddBtn();
+};
 
+var youtubeAddBtn = function youtubeAddBtn() {
+  var inputForm = document.getElementById('youtube-add-form');
+  inputForm.onsubmit = function (ev) {
+    ev.preventDefault();
+    var url = ev.srcElement[0].value;
+    _databaseService2.default.addYTAudio(url);
+  };
+};
 
-// let getAllTracksBtn = () => {
-//   let button = document.getElementById('get-all-tracks-btn');
-//   let form = {
-//     name: 'test2',
-//     artist: 'test artist',
-//     duration: 18500,
-//     uploader: 'test person'
-//   }
-//   button.onclick = ev => {
-//     request.post({
-//       url: 'http://52.39.82.57:3000/node/api/tracks',
-//       form: form
-//     }, (err, res, body) => {
-//       console.log(err);
-//       console.log(res);
-//       console.log(body);
-//     });
-//   }
-// }
-
-;module.exports = {
+module.exports = {
   initHome: initHome
 };
 //# sourceMappingURL=C:\DiscordDJ\controllers\home.js.map

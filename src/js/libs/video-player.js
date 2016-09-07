@@ -4,7 +4,7 @@ var initPlayer = function initPlayer() {
   var Player = videojs('video-frame', {
     bigPlayButton: false,
     controls: true,
-    autoplay: true,
+    autoplay: false,
     preload: 'auto',
     controlBar: {
       progressControl: false
